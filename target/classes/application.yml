@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order
+
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER:store}
+    password: ${DATABASE_PASSWORD:I5pEr@5ecReT}
+    driver-class-name: org.postgresql.Driver
+
+  flyway:
+    baseline-on-migrate: true
+    schemas: order
+    repair: true
+    
+  jpa:
+    properties:
+      hibernate:
+        default_schema: order
+
+logging:
+  level:
+    org:
+      springframework:
+        web: debug
+    store: ${LOGGING_LEVEL_STORE:debug}
